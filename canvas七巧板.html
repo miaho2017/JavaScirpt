@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #aaa; display:block; margin: 50px auto;">
+		当前浏览器不支持Cancas，请更换浏览器再试。
+	</canvas>
+	<script>
+		
+		
+		window.onload = function(){
+			var sev = [
+			{p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:"red"},
+			{p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:"orange"},
+			{p:[{x:800,y:0},{x:800,y:400},{x:600,y:400},{x:600,y:200}],color:"yellow"},
+			{p:[{x:600,y:200},{x:600,y:600},{x:400,y:400}],color:"green"},
+			{p:[{x:400,y:400},{x:600,y:600},{x:400,y:800},{x:200,y:600}],color:"blue"},
+			{p:[{x:200,y:600},{x:400,y:800},{x:0,y:800}],color:"purple"},
+			{p:[{x:800,y:400},{x:800,y:800},{x:400,y:800}],color:"brown"},
+			]
+
+			var canvas = document.getElementById('myCanvas');
+			var context = canvas.getContext("2d");
+
+			canvas.width = 800;
+			canvas.height = 800;
+
+			
+			
+			for(var i=0; i <sev.length; i++){
+				draw(sev[i],context)
+			}
+
+
+			function draw(piece,cxt){
+				cxt.beginPath();
+				cxt.moveTo(piece.p[0].x,piece.p[0].y);
+				for(var j=1; j<piece.p.length; j++)
+					cxt.lineTo(piece.p[j].x,piece.p[j].y);
+				cxt.closePath();
+
+				cxt.fillStyle = piece.color;
+				cxt.fill();
+
+				// cxt.strokeStyle = "black";
+				// lineWidth = 5;
+				// cxt.stroke();
+
+
+			}
+
+		}
+
+
+</script>
+
+</body>
+</html>
